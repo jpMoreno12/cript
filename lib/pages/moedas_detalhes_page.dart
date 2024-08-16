@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 /* O form facilita o gerenciamento de formularios */
 class MoedasDetalhesPage extends StatefulWidget {
 
-  Moeda moeda = Moeda(icone: icone, nome: nome, sigla: sigla, preco: preco);
+  Moeda moeda;
   MoedasDetalhesPage({super.key, required this.moeda});
 
   @override
@@ -17,6 +17,17 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
   final _form = GlobalKey<FormState>();
   final _valor = TextEditingController();
   double quantidade = 0;
+
+
+  comprar(){
+    if(_form.currentState!.validate()){
+      Navigator.pop(context);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Compra Realizada com sucesso')),
+      );
+    }
+  }
 
 
   NumberFormat real = NumberFormat.currency(locale: 'pt-BR', name: 'R\$' );
@@ -118,7 +129,7 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
               alignment: Alignment.bottomCenter,
               margin: const EdgeInsets.only(top: 24),
               child: ElevatedButton(
-                onPressed: (){}, 
+                onPressed: comprar, 
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  
