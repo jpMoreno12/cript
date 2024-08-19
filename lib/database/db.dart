@@ -40,7 +40,7 @@ class DB {
   //Criando estruturas das tabelas
   String get _conta => ''' 
     CREATE TABLE conta( 
-    id INTERGER  PRIMARY KEY AUTOINCREMENT,
+    id INTEGER  PRIMARY KEY AUTOINCREMENT,
     saldo REAL 
     ); 
   '''; 
@@ -55,7 +55,7 @@ class DB {
 
   String get _historico => '''
     CREATE TABLE historico (
-      id INTEGER PRIMARY KEY AUTO INCREMENT,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       data_operacao INT,
       tipo_operacao TEXT,
       moeda TEXT,
